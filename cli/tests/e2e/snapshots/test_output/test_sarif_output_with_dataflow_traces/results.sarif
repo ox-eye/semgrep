@@ -21,7 +21,7 @@
                     {
                       "location": {
                         "message": {
-                          "text": "Source: 'source1()' @ 'targets/taint/taint.py:3'"
+                          "text": "Source : '    a = source1()\n' @ 'Fpath(value='targets/taint/taint.py'):3'"
                         },
                         "physicalLocation": {
                           "artifactLocation": {
@@ -31,22 +31,21 @@
                             "endColumn": 18,
                             "endLine": 3,
                             "message": {
-                              "text": "Source: 'source1()' @ 'targets/taint/taint.py:3'"
+                              "text": "Source : '    a = source1()\n' @ 'Fpath(value='targets/taint/taint.py'):3'"
                             },
                             "snippet": {
-                              "text": "source1()"
+                              "text": "    a = source1()\n"
                             },
                             "startColumn": 9,
                             "startLine": 3
                           }
                         }
-                      },
-                      "nestingLevel": 0
+                      }
                     },
                     {
                       "location": {
                         "message": {
-                          "text": "Propagator : 'a' @ 'targets/taint/taint.py:3'"
+                          "text": "Propagator : '    a = source1()\n' @ 'Fpath(value='targets/taint/taint.py'):3'"
                         },
                         "physicalLocation": {
                           "artifactLocation": {
@@ -56,22 +55,21 @@
                             "endColumn": 6,
                             "endLine": 3,
                             "message": {
-                              "text": "Propagator : 'a' @ 'targets/taint/taint.py:3'"
+                              "text": "Propagator : '    a = source1()\n' @ 'Fpath(value='targets/taint/taint.py'):3'"
                             },
                             "snippet": {
-                              "text": "a"
+                              "text": "    a = source1()\n"
                             },
                             "startColumn": 5,
                             "startLine": 3
                           }
                         }
-                      },
-                      "nestingLevel": 0
+                      }
                     },
                     {
                       "location": {
                         "message": {
-                          "text": "Propagator : 'b' @ 'targets/taint/taint.py:8'"
+                          "text": "Propagator : '        b = a\n' @ 'Fpath(value='targets/taint/taint.py'):8'"
                         },
                         "physicalLocation": {
                           "artifactLocation": {
@@ -81,22 +79,21 @@
                             "endColumn": 10,
                             "endLine": 8,
                             "message": {
-                              "text": "Propagator : 'b' @ 'targets/taint/taint.py:8'"
+                              "text": "Propagator : '        b = a\n' @ 'Fpath(value='targets/taint/taint.py'):8'"
                             },
                             "snippet": {
-                              "text": "b"
+                              "text": "        b = a\n"
                             },
                             "startColumn": 9,
                             "startLine": 8
                           }
                         }
-                      },
-                      "nestingLevel": 0
+                      }
                     },
                     {
                       "location": {
                         "message": {
-                          "text": "Sink: 'sink1(b)' @ 'targets/taint/taint.py:9'"
+                          "text": "Sink : '    sink1(b)\n' @ 'Fpath(value='targets/taint/taint.py'):9'"
                         },
                         "physicalLocation": {
                           "artifactLocation": {
@@ -106,17 +103,16 @@
                             "endColumn": 13,
                             "endLine": 9,
                             "message": {
-                              "text": "Sink: 'sink1(b)' @ 'targets/taint/taint.py:9'"
+                              "text": "Sink : '    sink1(b)\n' @ 'Fpath(value='targets/taint/taint.py'):9'"
                             },
                             "snippet": {
-                              "text": "    sink1(b)"
+                              "text": "    sink1(b)\n"
                             },
                             "startColumn": 5,
                             "startLine": 9
                           }
                         }
-                      },
-                      "nestingLevel": 1
+                      }
                     }
                   ]
                 }
