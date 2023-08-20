@@ -25,7 +25,7 @@ logger = getLogger(__name__)
 class SarifFormatter(BaseFormatter):
     @staticmethod
     def _create_sarif_location_dict(
-        var_type: str, location: str, rule_match: str
+        var_type: str, location: out.Location, rule_match: RuleMatch
     ) -> Mapping[str, Any]:
         snipper = "".join(
             get_lines(Path(location.path), location.start.line, location.end.line)

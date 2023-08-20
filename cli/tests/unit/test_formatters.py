@@ -141,8 +141,10 @@ def test_rec_taint_obj_to_thread_flow_locations_sarif(mocker):
     mocker.patch.object(Path, "open", mocker.mock_open(read_data=file_content))
     mocker.patch.object(builtins, "open", mocker.mock_open(read_data=file_content))
     taint_rule_match = create_taint_rule_match()
-    thread_flow_locations = SarifFormatter._rec_taint_obj_to_thread_flow_locations_sarif(
-        "Sink", taint_rule_match.dataflow_trace.taint_sink, taint_rule_match
+    thread_flow_locations = (
+        SarifFormatter._rec_taint_obj_to_thread_flow_locations_sarif(
+            "Sink", taint_rule_match.dataflow_trace.taint_sink, taint_rule_match
+        )
     )
 
     assert bool(thread_flow_locations[0].get("location")), (
