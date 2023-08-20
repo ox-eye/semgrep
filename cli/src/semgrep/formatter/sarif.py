@@ -233,9 +233,9 @@ class SarifFormatter(BaseFormatter):
                         "region": {
                             "snippet": {"text": "".join(rule_match.lines).rstrip()},
                             "startLine": rule_match.start.line,
-                            "startColumn": rule_match.start.col - 1,
+                            "startColumn": rule_match.start.col,
                             "endLine": rule_match.end.line,
-                            "endColumn": rule_match.end.col - 1,
+                            "endColumn": rule_match.end.col,
                         },
                     }
                 }
@@ -280,9 +280,9 @@ class SarifFormatter(BaseFormatter):
                         {
                             "deletedRegion": {
                                 "startLine": rule_match.start.line,
-                                "startColumn": rule_match.start.col - 1,
+                                "startColumn": rule_match.start.col,
                                 "endLine": rule_match.end.line,
-                                "endColumn": rule_match.end.col - 1,
+                                "endColumn": rule_match.end.col,
                             },
                             "insertedContent": {"text": "\n".join(fixed_lines)},
                         }
