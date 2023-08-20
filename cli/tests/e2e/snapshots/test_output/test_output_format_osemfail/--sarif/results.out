@@ -21,12 +21,12 @@
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "endColumn": 26,
+                  "endColumn": 25,
                   "endLine": 3,
                   "snippet": {
                     "text": "    return a + b == a + b"
                   },
-                  "startColumn": 12,
+                  "startColumn": 11,
                   "startLine": 3
                 }
               }
