@@ -388,7 +388,10 @@ class StreamingSemgrepCore:
         # Raise any exceptions from processing stdout/err
         for r in results:
             if isinstance(r, Exception):
-                raise SemgrepError(f"Error while running rules: {r}")
+                raise SemgrepError("\n".join([
+                    f"Error while running rules: {r}", "core stdout:", self._stdout,
+                    "core stderr:", self._stderr
+                ]))
 
     async def _stream_exec_subprocess(self) -> int:
         """
