@@ -27,8 +27,8 @@ class SarifFormatter(BaseFormatter):
     def _create_sarif_location_dict(
         var_type: str, location: out.Location, rule_match: RuleMatch
     ) -> Mapping[str, Any]:
-        snipper = "".join(
-            get_lines(Path(location.path), location.start.line, location.end.line)
+        snippet = "".join(
+            get_lines(Path(location.path.value), location.start.line, location.end.line)
         )
         message = f"{var_type} : '{snippet}' @ '{str(location.path)}:{str(location.start.line)}'"
         return {
