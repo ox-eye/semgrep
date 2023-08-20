@@ -21,12 +21,12 @@
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "endColumn": 26,
+                  "endColumn": 25,
                   "endLine": 2,
                   "snippet": {
                     "text": "    return a + b == a + b  # nosemgrep: rules.eqeq-is-bad"
                   },
-                  "startColumn": 12,
+                  "startColumn": 11,
                   "startLine": 2
                 }
               }

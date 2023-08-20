@@ -30,12 +30,12 @@ SEMGREP_APP_TOKEN="fake_key" SEMGREP_USER_AGENT_APPEND="pytest" SEMGREP_SETTINGS
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "endColumn": 11,
+                  "endColumn": 10,
                   "endLine": 4,
                   "snippet": {
                     "text": "    a == a"
                   },
-                  "startColumn": 5,
+                  "startColumn": 4,
                   "startLine": 4
                 }
               }
@@ -59,12 +59,12 @@ SEMGREP_APP_TOKEN="fake_key" SEMGREP_USER_AGENT_APPEND="pytest" SEMGREP_SETTINGS
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "endColumn": 11,
+                  "endColumn": 10,
                   "endLine": 5,
                   "snippet": {
                     "text": "    a == a"
                   },
-                  "startColumn": 5,
+                  "startColumn": 4,
                   "startLine": 5
                 }
               }
@@ -88,12 +88,12 @@ SEMGREP_APP_TOKEN="fake_key" SEMGREP_USER_AGENT_APPEND="pytest" SEMGREP_SETTINGS
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "endColumn": 11,
+                  "endColumn": 10,
                   "endLine": 6,
                   "snippet": {
                     "text": "    a == a  # nosemgrep"
                   },
-                  "startColumn": 5,
+                  "startColumn": 4,
                   "startLine": 6
                 }
               }
@@ -122,12 +122,12 @@ SEMGREP_APP_TOKEN="fake_key" SEMGREP_USER_AGENT_APPEND="pytest" SEMGREP_SETTINGS
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "endColumn": 11,
+                  "endColumn": 10,
                   "endLine": 7,
                   "snippet": {
                     "text": "    a == a"
                   },
-                  "startColumn": 5,
+                  "startColumn": 4,
                   "startLine": 7
                 }
               }
@@ -151,12 +151,12 @@ SEMGREP_APP_TOKEN="fake_key" SEMGREP_USER_AGENT_APPEND="pytest" SEMGREP_SETTINGS
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "endColumn": 11,
+                  "endColumn": 10,
                   "endLine": 9,
                   "snippet": {
                     "text": "    x == x  # nosemgrep"
                   },
-                  "startColumn": 5,
+                  "startColumn": 4,
                   "startLine": 9
                 }
               }
@@ -185,12 +185,12 @@ SEMGREP_APP_TOKEN="fake_key" SEMGREP_USER_AGENT_APPEND="pytest" SEMGREP_SETTINGS
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "endColumn": 11,
+                  "endColumn": 10,
                   "endLine": 11,
                   "snippet": {
                     "text": "    y == y"
                   },
-                  "startColumn": 5,
+                  "startColumn": 4,
                   "startLine": 11
                 }
               }
@@ -214,12 +214,12 @@ SEMGREP_APP_TOKEN="fake_key" SEMGREP_USER_AGENT_APPEND="pytest" SEMGREP_SETTINGS
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "endColumn": 11,
+                  "endColumn": 10,
                   "endLine": 13,
                   "snippet": {
                     "text": "    z == z  # nosemgrep"
                   },
-                  "startColumn": 5,
+                  "startColumn": 4,
                   "startLine": 13
                 }
               }
@@ -250,9 +250,9 @@ SEMGREP_APP_TOKEN="fake_key" SEMGREP_USER_AGENT_APPEND="pytest" SEMGREP_SETTINGS
                   "replacements": [
                     {
                       "deletedRegion": {
-                        "endColumn": 11,
+                        "endColumn": 10,
                         "endLine": 15,
-                        "startColumn": 5,
+                        "startColumn": 4,
                         "startLine": 15
                       },
                       "insertedContent": {
@@ -275,12 +275,12 @@ SEMGREP_APP_TOKEN="fake_key" SEMGREP_USER_AGENT_APPEND="pytest" SEMGREP_SETTINGS
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "endColumn": 11,
+                  "endColumn": 10,
                   "endLine": 15,
                   "snippet": {
                     "text": "    x == 5"
                   },
-                  "startColumn": 5,
+                  "startColumn": 4,
                   "startLine": 15
                 }
               }
@@ -306,9 +306,9 @@ SEMGREP_APP_TOKEN="fake_key" SEMGREP_USER_AGENT_APPEND="pytest" SEMGREP_SETTINGS
                   "replacements": [
                     {
                       "deletedRegion": {
-                        "endColumn": 11,
+                        "endColumn": 10,
                         "endLine": 16,
-                        "startColumn": 5,
+                        "startColumn": 4,
                         "startLine": 16
                       },
                       "insertedContent": {
@@ -331,12 +331,12 @@ SEMGREP_APP_TOKEN="fake_key" SEMGREP_USER_AGENT_APPEND="pytest" SEMGREP_SETTINGS
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "endColumn": 11,
+                  "endColumn": 10,
                   "endLine": 16,
                   "snippet": {
                     "text": "    y == 5  # nosemgrep"
                   },
-                  "startColumn": 5,
+                  "startColumn": 4,
                   "startLine": 16
                 }
               }
@@ -365,12 +365,12 @@ SEMGREP_APP_TOKEN="fake_key" SEMGREP_USER_AGENT_APPEND="pytest" SEMGREP_SETTINGS
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "endColumn": 13,
+                  "endColumn": 12,
                   "endLine": 18,
                   "snippet": {
                     "text": "    baz == 4  # nosemgrep"
                   },
-                  "startColumn": 5,
+                  "startColumn": 4,
                   "startLine": 18
                 }
               }
@@ -399,12 +399,12 @@ SEMGREP_APP_TOKEN="fake_key" SEMGREP_USER_AGENT_APPEND="pytest" SEMGREP_SETTINGS
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "endColumn": 13,
+                  "endColumn": 12,
                   "endLine": 19,
                   "snippet": {
                     "text": "    baz == 4"
                   },
-                  "startColumn": 5,
+                  "startColumn": 4,
                   "startLine": 19
                 }
               }
@@ -428,12 +428,12 @@ SEMGREP_APP_TOKEN="fake_key" SEMGREP_USER_AGENT_APPEND="pytest" SEMGREP_SETTINGS
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "endColumn": 13,
+                  "endColumn": 12,
                   "endLine": 27,
                   "snippet": {
                     "text": "    sink(d2)"
                   },
-                  "startColumn": 5,
+                  "startColumn": 4,
                   "startLine": 27
                 }
               }
@@ -457,12 +457,12 @@ SEMGREP_APP_TOKEN="fake_key" SEMGREP_USER_AGENT_APPEND="pytest" SEMGREP_SETTINGS
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "endColumn": 0,
+                  "endColumn": -1,
                   "endLine": 2,
                   "snippet": {
                     "text": "[[package]]\nname = \"badlib\""
                   },
-                  "startColumn": 0,
+                  "startColumn": -1,
                   "startLine": 1
                 }
               }
