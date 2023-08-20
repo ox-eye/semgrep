@@ -79,22 +79,22 @@ def test_dataflow_source_to_thread_flow_sarif(mocker):
     mocker.patch.object(Path, "open", mocker.mock_open(read_data=file_content))
     mocker.patch.object(builtins, "open", mocker.mock_open(read_data=file_content))
     taint_rule_match = create_taint_rule_match()
-    thread_flow_location = SarifFormatter._taint_source_to_thread_flow_location_sarif(
+    thread_flow_locations = SarifFormatter._taint_source_to_thread_flow_locations_sarif(
         taint_rule_match
     )
 
-    assert bool(thread_flow_location[0].get("location")), (
+    assert bool(thread_flow_locations[0].get("location")), (
         "If location information is available, a threadFlowLocation object "
         "SHALL contain a property named location."
     )
-    assert isinstance(thread_flow_location[0].get("location"), dict), (
+    assert isinstance(thread_flow_locations[0].get("location"), dict), (
         "A location value is a location object that specifies the location to "
         "which the threadFlowLocation object refers"
     )
 
 
 @pytest.mark.quick
-def test_intermediate_vars_to_thread_flow_location_sarif(mocker):
+def test_intermediate_vars_to_thread_flow_locations_sarif(mocker):
     # https://docs.oasis-open.org/sarif/sarif/v2.1.0/cs01/sarif-v2.1.0-cs01.html#_Toc16012707
     file_content = dedent(
         """
@@ -106,30 +106,30 @@ def test_intermediate_vars_to_thread_flow_location_sarif(mocker):
     mocker.patch.object(Path, "open", mocker.mock_open(read_data=file_content))
     mocker.patch.object(builtins, "open", mocker.mock_open(read_data=file_content))
     taint_rule_match = create_taint_rule_match()
-    thread_flow_locations = (
-        SarifFormatter._intermediate_vars_to_thread_flow_location_sarif(
+    thread_flow_locationss = (
+        SarifFormatter._intermediate_vars_to_thread_flow_locations_sarif(
             taint_rule_match
         )
     )
 
-    assert isinstance(thread_flow_locations, list), (
+    assert isinstance(thread_flow_locationss, list), (
         "A threadFlow object SHALL contain a property named locations whose "
         "value is an array of one or more threadFlowLocation objects "
     )
 
-    for thread_flow_location in thread_flow_locations:
-        assert bool(thread_flow_location.get("location")), (
+    for thread_flow_locations in thread_flow_locationss:
+        assert bool(thread_flow_locations.get("location")), (
             "If location information is available, a threadFlowLocation object "
             "SHALL contain a property named location."
         )
-        assert isinstance(thread_flow_location.get("location"), dict), (
+        assert isinstance(thread_flow_locations.get("location"), dict), (
             "A location value is a location object that specifies the location to "
             "which the threadFlowLocation object refers"
         )
 
 
 @pytest.mark.quick
-def test_rec_taint_obj_to_thread_flow_location_sarif(mocker):
+def test_rec_taint_obj_to_thread_flow_locations_sarif(mocker):
     # https://docs.oasis-open.org/sarif/sarif/v2.1.0/cs01/sarif-v2.1.0-cs01.html#_Toc16012707
     file_content = dedent(
         """
@@ -141,15 +141,15 @@ def test_rec_taint_obj_to_thread_flow_location_sarif(mocker):
     mocker.patch.object(Path, "open", mocker.mock_open(read_data=file_content))
     mocker.patch.object(builtins, "open", mocker.mock_open(read_data=file_content))
     taint_rule_match = create_taint_rule_match()
-    thread_flow_location = SarifFormatter._rec_taint_obj_to_thread_flow_location_sarif(
+    thread_flow_locations = SarifFormatter._rec_taint_obj_to_thread_flow_locations_sarif(
         "Sink", taint_rule_match.dataflow_trace.taint_sink, taint_rule_match
     )
 
-    assert bool(thread_flow_location[0].get("location")), (
+    assert bool(thread_flow_locations[0].get("location")), (
         "If location information is available, a threadFlowLocation object "
         "SHALL contain a property named location."
     )
-    assert isinstance(thread_flow_location[0].get("location"), dict), (
+    assert isinstance(thread_flow_locations[0].get("location"), dict), (
         "A location value is a location object that specifies the location to "
         "which the threadFlowLocation object refers"
     )
