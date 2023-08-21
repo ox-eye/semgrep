@@ -25,7 +25,7 @@ class SarifFormatter(BaseFormatter):
     def _create_sarif_location_dict(
         var_type: str, snippet: str, location: out.Location, rule_match: RuleMatch
     ) -> Mapping[str, Any]:
-        message = f"{var_type} : '{snippet}' @ '{str(location.path.value)}:{str(location.start.line)}'"
+        message = f"{var_type}: '{snippet.strip()}' @ '{str(location.path.value)}:{str(location.start.line)}'"
         return {
             "location": {
                 "message": {"text": message},
@@ -36,7 +36,7 @@ class SarifFormatter(BaseFormatter):
                         "startColumn": location.start.col,
                         "endLine": location.end.line,
                         "endColumn": location.end.col,
-                        "snippet": {"text": snippet},
+                        "snippet": {"text": snippet.rstrip()},
                         "message": {"text": message},
                     },
                 },
@@ -49,7 +49,7 @@ class SarifFormatter(BaseFormatter):
     ) -> Any:
         return SarifFormatter._create_sarif_location_dict(
             "Propagator",
-            "".join(intermediate_var.content).strip(),
+            "".join(intermediate_var.content),
             intermediate_var.location,
             rule_match,
         )
@@ -80,11 +80,11 @@ class SarifFormatter(BaseFormatter):
         # the taint object can be an instance of CliLoc, CliCall or CliMatchCallTrace
         if isinstance(taint_obj, out.CliLoc):
             location = taint_obj.value[0]
-            snippet = "".join(taint_obj.value[1]).strip()
+            snippet = "".join(taint_obj.value[1])
         elif isinstance(taint_obj, out.CliCall):
             var_type = "Propagator"
             location = taint_obj.value[0][0]
-            snippet = "".join(taint_obj.value[0][1]).strip()
+            snippet = "".join(taint_obj.value[0][1])
         else:
             return taint_trace
 
@@ -120,7 +120,7 @@ class SarifFormatter(BaseFormatter):
             intermediate_var_locations.append(
                 SarifFormatter._create_sarif_location_dict(
                     "Propagator",
-                    "".join(intermediate_var.content).strip(),
+                    "".join(intermediate_var.content),
                     intermediate_var.location,
                     rule_match,
                 )
