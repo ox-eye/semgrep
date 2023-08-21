@@ -59,6 +59,7 @@ class SarifFormatter(BaseFormatter):
             "".join(intermediate_var.content),
             intermediate_var.location,
             rule_match,
+            nesting_level=0,
         )
 
     @staticmethod
@@ -98,6 +99,7 @@ class SarifFormatter(BaseFormatter):
         nesting_level = 0
         if var_type.lower() == "sink":
             nesting_level = 1
+            snippet = "".join(rule_match.lines)
 
         return taint_trace + [
             SarifFormatter._create_sarif_location_dict(
