@@ -63,18 +63,18 @@ class SarifFormatter(BaseFormatter):
         )
 
     @staticmethod
-    def _rec_taint_obj_to_thread_flow_location_sarif(
+    def _rec_taint_obj_to_thread_flow_locations_sarif(
         var_type: str, taint_obj: Any, rule_match: RuleMatch
     ) -> List[Any]:
         taint_trace = []
 
         if isinstance(taint_obj, out.CliMatchCallTrace):
-            taint_trace += SarifFormatter._rec_taint_obj_to_thread_flow_location_sarif(
+            taint_trace += SarifFormatter._rec_taint_obj_to_thread_flow_locations_sarif(
                 var_type, taint_obj.value, rule_match
             )
 
         if isinstance(taint_obj, out.CliCall):
-            taint_trace += SarifFormatter._rec_taint_obj_to_thread_flow_location_sarif(
+            taint_trace += SarifFormatter._rec_taint_obj_to_thread_flow_locations_sarif(
                 var_type, taint_obj.value[2], rule_match
             )
 
@@ -116,7 +116,7 @@ class SarifFormatter(BaseFormatter):
         if not taint_source:
             return None
         # calculate source flow - recursive
-        return SarifFormatter._rec_taint_obj_to_thread_flow_location_sarif(
+        return SarifFormatter._rec_taint_obj_to_thread_flow_locations_sarif(
             "Source", taint_source, rule_match
         )
 
@@ -169,9 +169,11 @@ class SarifFormatter(BaseFormatter):
                 for intermediate_var_location in intermediate_var_locations:
                     locations.append(intermediate_var_location)
 
-        sink_thread_trace = SarifFormatter._rec_taint_obj_to_thread_flow_location_sarif(
-            "Sink", dataflow_trace.taint_sink, rule_match
-        )[::-1]
+        sink_thread_trace = (
+            SarifFormatter._rec_taint_obj_to_thread_flow_locations_sarif(
+                "Sink", dataflow_trace.taint_sink, rule_match
+            )[::-1]
+        )
         locations += sink_thread_trace
 
         thread_flows.append({"locations": locations})
