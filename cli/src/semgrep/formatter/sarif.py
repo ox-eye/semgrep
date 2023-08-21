@@ -51,7 +51,7 @@ class SarifFormatter(BaseFormatter):
         return sarif_dict
 
     @staticmethod
-    def _taint_obj_intermediate_vars_to_thread_flow_location_sarif(
+    def _taint_obj_intermediate_vars_to_thread_flow_locations_sarif(
         intermediate_var: Any, rule_match: RuleMatch
     ) -> Any:
         return SarifFormatter._create_sarif_location_dict(
@@ -80,7 +80,7 @@ class SarifFormatter(BaseFormatter):
 
             for intermediate_var in taint_obj.value[1]:
                 taint_trace.append(
-                    SarifFormatter._taint_obj_intermediate_vars_to_thread_flow_location_sarif(
+                    SarifFormatter._taint_obj_intermediate_vars_to_thread_flow_locations_sarif(
                         intermediate_var, rule_match
                     )
                 )
@@ -121,7 +121,7 @@ class SarifFormatter(BaseFormatter):
         )
 
     @staticmethod
-    def _intermediate_vars_to_thread_flow_location_sarif(rule_match: RuleMatch) -> Any:
+    def _intermediate_vars_to_thread_flow_locations_sarif(rule_match: RuleMatch) -> Any:
         dataflow_trace = rule_match.dataflow_trace
         if not dataflow_trace:
             return None
@@ -161,7 +161,7 @@ class SarifFormatter(BaseFormatter):
 
         if intermediate_vars:
             intermediate_var_locations = (
-                SarifFormatter._intermediate_vars_to_thread_flow_location_sarif(
+                SarifFormatter._intermediate_vars_to_thread_flow_locations_sarif(
                     rule_match
                 )
             )
