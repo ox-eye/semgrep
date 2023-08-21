@@ -79,7 +79,7 @@ class SarifFormatter(BaseFormatter):
                     )
                 )
 
-        # the taint object can be an instance of CliLoc, CliClass or CliMatchCallTrace
+        # the taint object can be an instance of CliLoc, CliCall or CliMatchCallTrace
         if isinstance(taint_obj, out.CliLoc):
             location = taint_obj.value[0]
             snippet = "".join(taint_obj.value[1]).strip()
