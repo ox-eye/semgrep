@@ -21,7 +21,7 @@
                     {
                       "location": {
                         "message": {
-                          "text": "Source: 'source1()' @ 'targets/taint/taint.py:3'"
+                          "text": "Source : 'source1()' @ 'targets/taint/taint.py:3'"
                         },
                         "physicalLocation": {
                           "artifactLocation": {
@@ -31,7 +31,7 @@
                             "endColumn": 18,
                             "endLine": 3,
                             "message": {
-                              "text": "Source: 'source1()' @ 'targets/taint/taint.py:3'"
+                              "text": "Source : 'source1()' @ 'targets/taint/taint.py:3'"
                             },
                             "snippet": {
                               "text": "source1()"
@@ -40,8 +40,7 @@
                             "startLine": 3
                           }
                         }
-                      },
-                      "nestingLevel": 0
+                      }
                     },
                     {
                       "location": {
@@ -65,8 +64,7 @@
                             "startLine": 3
                           }
                         }
-                      },
-                      "nestingLevel": 0
+                      }
                     },
                     {
                       "location": {
@@ -90,13 +88,12 @@
                             "startLine": 8
                           }
                         }
-                      },
-                      "nestingLevel": 0
+                      }
                     },
                     {
                       "location": {
                         "message": {
-                          "text": "Sink: 'sink1(b)' @ 'targets/taint/taint.py:9'"
+                          "text": "Sink : 'sink1(b)' @ 'targets/taint/taint.py:9'"
                         },
                         "physicalLocation": {
                           "artifactLocation": {
@@ -106,17 +103,16 @@
                             "endColumn": 13,
                             "endLine": 9,
                             "message": {
-                              "text": "Sink: 'sink1(b)' @ 'targets/taint/taint.py:9'"
+                              "text": "Sink : 'sink1(b)' @ 'targets/taint/taint.py:9'"
                             },
                             "snippet": {
-                              "text": "    sink1(b)"
+                              "text": "sink1(b)"
                             },
                             "startColumn": 5,
                             "startLine": 9
                           }
                         }
-                      },
-                      "nestingLevel": 1
+                      }
                     }
                   ]
                 }
