@@ -23,10 +23,14 @@ logger = getLogger(__name__)
 class SarifFormatter(BaseFormatter):
     @staticmethod
     def _create_sarif_location_dict(
-        var_type: str, snippet: str, location: out.Location, rule_match: RuleMatch
+        var_type: str,
+        snippet: str,
+        location: out.Location,
+        rule_match: RuleMatch,
+        nesting_level: int = -1,
     ) -> Mapping[str, Any]:
         message = f"{var_type}: '{snippet.strip()}' @ '{str(location.path.value)}:{str(location.start.line)}'"
-        return {
+        sarif_dict = {
             "location": {
                 "message": {"text": message},
                 "physicalLocation": {
@@ -42,13 +46,16 @@ class SarifFormatter(BaseFormatter):
                 },
             }
         }
+        if nesting_level != -1:
+            sarif_dict["nestingLevel"] = nesting_level
+        return sarif_dict
 
     @staticmethod
     def _taint_obj_intermediate_vars_to_thread_flow_location_sarif(
         intermediate_var: Any, rule_match: RuleMatch
     ) -> Any:
         return SarifFormatter._create_sarif_location_dict(
-            "Propagator",
+            "Propagator ",
             "".join(intermediate_var.content),
             intermediate_var.location,
             rule_match,
@@ -82,15 +89,19 @@ class SarifFormatter(BaseFormatter):
             location = taint_obj.value[0]
             snippet = "".join(taint_obj.value[1])
         elif isinstance(taint_obj, out.CliCall):
-            var_type = "Propagator"
+            var_type = "Propagator "
             location = taint_obj.value[0][0]
             snippet = "".join(taint_obj.value[0][1])
         else:
             return taint_trace
 
+        nesting_level = 0
+        if var_type.lower() == "sink":
+            nesting_level = 1
+
         return taint_trace + [
             SarifFormatter._create_sarif_location_dict(
-                var_type, snippet, location, rule_match
+                var_type, snippet, location, rule_match, nesting_level
             )
         ]
 
@@ -119,7 +130,7 @@ class SarifFormatter(BaseFormatter):
         for intermediate_var in intermediate_vars:
             intermediate_var_locations.append(
                 SarifFormatter._create_sarif_location_dict(
-                    "Propagator",
+                    "Propagator ",
                     "".join(intermediate_var.content),
                     intermediate_var.location,
                     rule_match,
