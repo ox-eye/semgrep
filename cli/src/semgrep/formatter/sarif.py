@@ -47,7 +47,7 @@ class SarifFormatter(BaseFormatter):
             }
         }
         if nesting_level != -1:
-            sarif_dict["nestingLevel"] = nesting_level
+            sarif_dict["nestingLevel"] = nesting_level # type: ignore
         return sarif_dict
 
     @staticmethod
@@ -136,6 +136,7 @@ class SarifFormatter(BaseFormatter):
                     "".join(intermediate_var.content),
                     intermediate_var.location,
                     rule_match,
+                    nesting_level=0
                 )
             )
         return intermediate_var_locations
