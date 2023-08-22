@@ -64,8 +64,8 @@ class SarifFormatter(BaseFormatter):
                 "physicalLocation": {
                     "artifactLocation": {"uri": str(rule_match.path)},
                     "region": {
-                        "startLine": start_highlight,
-                        "startColumn": location.start.col,
+                        "startLine": location.start.line,
+                        "startColumn": start_highlight,
                         "endLine": location.end.line,
                         "endColumn": end_highlight,
                         "snippet": {"text": extended_snippet},
