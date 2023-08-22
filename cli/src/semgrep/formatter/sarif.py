@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 from typing import Any
 from typing import Dict
 from typing import Iterable
@@ -6,7 +7,6 @@ from typing import List
 from typing import Mapping
 from typing import Optional
 from typing import Sequence
-from pathlib import Path
 
 import semgrep.semgrep_interfaces.semgrep_output_v1 as out
 from semgrep import __VERSION__
@@ -16,8 +16,8 @@ from semgrep.error import SemgrepError
 from semgrep.formatter.base import BaseFormatter
 from semgrep.rule import Rule
 from semgrep.rule_match import RuleMatch
-from semgrep.verbose_logging import getLogger
 from semgrep.util import get_lines
+from semgrep.verbose_logging import getLogger
 
 logger = getLogger(__name__)
 
