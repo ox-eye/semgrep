@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 from typing import Any
 from typing import Dict
 from typing import Iterable
@@ -15,12 +16,34 @@ from semgrep.error import SemgrepError
 from semgrep.formatter.base import BaseFormatter
 from semgrep.rule import Rule
 from semgrep.rule_match import RuleMatch
+from semgrep.util import get_lines
 from semgrep.verbose_logging import getLogger
 
 logger = getLogger(__name__)
 
 
 class SarifFormatter(BaseFormatter):
+    @staticmethod
+    def _generate_taint_snippet(location: Any) -> Any:
+        """
+        Get two lines before the taint, and 2 lines after for better code snippet
+        """
+        content = "".join(
+            get_lines(
+                Path(location.path.value), location.start.line, location.end.line + 2
+            )
+        ).rstrip("\n")
+        snippet_before = "".join(
+            get_lines(
+                Path(location.path.value),
+                location.start.line - 2,
+                location.end.line - 1,
+            )
+        ).lstrip("\n")
+        start_highlight = len(snippet_before) + location.start.col
+        end_hightlight = len(snippet_before) + location.end.col
+        return "".join([snippet_before, content]), start_highlight, end_hightlight
+
     @staticmethod
     def _create_sarif_location_dict(
         var_type: str,
@@ -30,6 +53,11 @@ class SarifFormatter(BaseFormatter):
         nesting_level: int = -1,
     ) -> Mapping[str, Any]:
         message = f"{var_type}: '{snippet.strip()}' @ '{str(location.path.value)}:{str(location.start.line)}'"
+        (
+            extended_snippet,
+            start_highlight,
+            end_highlight,
+        ) = SarifFormatter._generate_taint_snippet(location)
         sarif_dict = {
             "location": {
                 "message": {"text": message},
@@ -37,10 +65,10 @@ class SarifFormatter(BaseFormatter):
                     "artifactLocation": {"uri": str(rule_match.path)},
                     "region": {
                         "startLine": location.start.line,
-                        "startColumn": location.start.col,
+                        "startColumn": start_highlight,
                         "endLine": location.end.line,
-                        "endColumn": location.end.col,
-                        "snippet": {"text": snippet.rstrip()},
+                        "endColumn": end_highlight,
+                        "snippet": {"text": extended_snippet},
                         "message": {"text": message},
                     },
                 },
