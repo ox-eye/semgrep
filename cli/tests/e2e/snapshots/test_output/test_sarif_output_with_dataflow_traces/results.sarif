@@ -28,16 +28,16 @@
                             "uri": "targets/taint/taint.py"
                           },
                           "region": {
-                            "endColumn": 18,
+                            "endColumn": 75,
                             "endLine": 3,
                             "message": {
                               "text": "Source: 'source1()' @ 'targets/taint/taint.py:3'"
                             },
                             "snippet": {
-                              "text": "source1()"
+                              "text": "def foo():\n    x = 'test string format {}'.format('foo')\n    a = source1()\n    if True:\n        b = a"
                             },
                             "startColumn": 9,
-                            "startLine": 3
+                            "startLine": 66
                           }
                         }
                       },
@@ -53,16 +53,16 @@
                             "uri": "targets/taint/taint.py"
                           },
                           "region": {
-                            "endColumn": 6,
+                            "endColumn": 63,
                             "endLine": 3,
                             "message": {
                               "text": "Propagator : 'a' @ 'targets/taint/taint.py:3'"
                             },
                             "snippet": {
-                              "text": "a"
+                              "text": "def foo():\n    x = 'test string format {}'.format('foo')\n    a = source1()\n    if True:\n        b = a"
                             },
                             "startColumn": 5,
-                            "startLine": 3
+                            "startLine": 62
                           }
                         }
                       },
@@ -78,16 +78,16 @@
                             "uri": "targets/taint/taint.py"
                           },
                           "region": {
-                            "endColumn": 10,
+                            "endColumn": 44,
                             "endLine": 8,
                             "message": {
                               "text": "Propagator : 'b' @ 'targets/taint/taint.py:8'"
                             },
                             "snippet": {
-                              "text": "b"
+                              "text": "        b = sanitize1()\n    else:\n        b = a\n    sink1(b)"
                             },
                             "startColumn": 9,
-                            "startLine": 8
+                            "startLine": 43
                           }
                         }
                       },
@@ -103,16 +103,16 @@
                             "uri": "targets/taint/taint.py"
                           },
                           "region": {
-                            "endColumn": 13,
+                            "endColumn": 37,
                             "endLine": 9,
                             "message": {
                               "text": "Sink: 'sink1(b)' @ 'targets/taint/taint.py:9'"
                             },
                             "snippet": {
-                              "text": "    sink1(b)"
+                              "text": "    else:\n        b = a\n    sink1(b)"
                             },
                             "startColumn": 5,
-                            "startLine": 9
+                            "startLine": 29
                           }
                         }
                       },
